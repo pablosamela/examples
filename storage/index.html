@@ -13,6 +13,97 @@ and open the template in the editor.
         <script src="storage.js" type="text/javascript"></script>
     </head>
     <body>
-        <div id="detailSku" class="s-hidden" data-sku="G7108SH66SBLAR"></div>
+        <div id="detailSku" class="s-hidden" data-sku="JI230AB74YEVAR" data-price="139.00" data-product-details='{"name":"Short Jean Negro Jimezares","url":"http:\/\/alice.ar.local\/Short-Jean-Negro-Jimezares-33925.html","image":"http:\/\/static.dafiti.com.ar\/p\/jimezares-0890-52933-1-catalog.jpg","brand":"Jimezares","sku":"JI230AB74YEVAR"}'></div>
+        
+        
+        
+        <script type="text/tmpl" id="itemVisitedBox">
+            <div class="productList " style="width:100%">
+                <p class="prd-description-title mbm">Ultimos vistos</p>
+                <div id="visitedProductsFlex" class="flexslider-products">
+                    <div class="flex-viewport">
+                        <div class="slides">
+                            <% for ( var i = 0; i < items.length; i++ ) { %>
+                                <div class="unit mbs item-box-holder details">
+                                    <a href="<%=items[i].url%>" class="lazyImage">
+                                        <img src="/images/dafiti/1x1.gif" data-src="<%=items[i].image%>" alt="<%=items[i].name%> de <%=items[i].brand%>" />
+                                    </a>
+                                    <div class="item-info box fsm">
+                                        <p class="strong"><%=items[i].brand%></p>
+                                        <p><%=items[i].name%></p>
+                                        <% if (items[i].price){ %>
+                                            <p>
+                                                <% if (items[i].specialprice){ %>
+                                                    <span class="strike">
+                                                        <%=items[i].price%>
+                                                    </span>
+                                                    <span class="strong">
+                                                        <%=items[i].specialprice%>
+                                                    </span>
+                                                <% }else{ %>
+                                                    <span>
+                                                        <%=items[i].price%>
+                                                    </span>
+                                                <% } %>
+                                            </p>
+                                        <% } %>
+                                    </div>
+
+                                    <div class="select-price-box hidefirst">
+                                        <div id="productOptionsWrapper" class="boxSizeSelector productSize product-options clearfix">
+                                            <div class="s-error msgBox mbs pas product-selector-error" id="product-selector-error" style="display:none;margin-top:8px;margin-bottom:8px;"></div>
+
+                                            <div id="OptionsSingleDefault" class="prd-shoe_size">
+                                                <div class="selectSize mbs" data-sku="<%=items[i].sku%>">
+                                                    <div class="selectContainer">
+                                                        <span class="rfloat icon icon-arrow-down"></span>
+                                                        <span class="size">Seleccione un talle</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                       </div>
+                                        <form action="#" id="cartform" method="get">
+                                            <div class="cartHolder">
+                                                <input id="configSku" class="configSku" type="hidden" name="configSku" value="<%=items[i].sku%>">
+                                                <input id="selectedSku" class="selectedSku" type="hidden" name="selectedSku" value="">
+                                                <button id="AddToCart" class="AddToCart greyButton sel-cart-add-button" title="Comprar" type="submit">
+                                                    <span class="icon i-cart cartTxt">Comprar</span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            <% } %>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/tmpl" id="itemSizesList">
+            <ul class="prd-option-collection ui-listHorizontal ui-listItemBorder shoe_size">
+                <% for ( var i = 0; i < items.length; i++ ) { %>
+                    <li class="prd-option-item opt-<%=items[i].size%>item-<%=i%>" data-simple='<%=JSON.stringify(items[i])%>'>
+                        <%=items[i].label%>
+                        <span id="product-option-stock-hint" class="product-option-stock-hint rfloat">
+                            <span id="product-option-stock-number" class="product-option-stock-number">
+                                <%if(items[i].stock == 0){%>
+                                    <?php echo Alice_Component_I18n::t('Agotado'); ?>    
+                                <%}else if(items[i].stock == 1){%>
+                                    <?php echo Alice_Component_I18n::t('%s item', array('<%=items[i].stock%>')); ?>
+                                <%}else{%>
+                                    <?php echo Alice_Component_I18n::t('%s items', array('<%=items[i].stock%>')); ?>
+                                <%}%>
+                        </span>
+                    </li>
+                <% } %>
+            </ul>
+        </script>
+
+        <div id="visitedProduct" class="clear"></div>
+
+
+
     </body>
 </html>
