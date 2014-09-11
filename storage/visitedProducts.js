@@ -88,23 +88,41 @@ var visitedProducts = {
             $(this.containerFlex + ' .flex-prev').addClass('icon-chevron-left');
             $(this.containerFlex + ' .flex-next').addClass('icon-chevron-right');
         }
+    },
+    loadAll:function(){
+        var visitedContainer = $(this.container);
+        if(!visitedContainer.hasClass('loaded')){
+            visitedContainer.find('.item-box-holder').each(function(){
+                var sizes = new SizesManager();
+                var that = $(this);
+                sizes.load($(this).find('.selectSize'),function(data){
+                    var box = new TemplateEngine();
+                     that.find('.itemPrice').append(box.parse('itemPrice', {items: data.details}));
+                });
+            });
+            visitedContainer.addClass('loaded');
+        }
     }
 };
 
 $(document).ready(function(){
-    if(sitesettings.page == 'productpage' && sitesettings.enabledLastProducts){
+    if(sitesettings.page == 'productpage' && sitesettings.enabledLastProducts && !sitesettings.isShop){
         visitedProducts.init($('#detailSku').data('product-details'));
+        
+        $(window).on('scroll',function() {
+            var scrollPosition = $(window).scrollTop();
+            var divPosition = $('#visitedProduct').offset().top;
+            if(scrollPosition < divPosition + 200 && scrollPosition > divPosition - 200){
+                visitedProducts.loadAll();
+            }
+        });
+        
         $(document).on('click', '#visitedProductsFlex .AddToCart', function() {
-            if(typeof(_gaq) != 'undefined') {
-                _gaq.push(['_trackEvent', 'LastViewed', 'AddToCart', 'AddToCart', detail.getProductPrice($(this))]);
+            var parentHolder = $(this).closest('.item-box-holder');
+            if(typeof(_gaq) != 'undefined' && parentHolder.find('.selectedSku').val()) {
+                var price = $.trim(parentHolder.find('.itemPrice span').text());
+                _gaq.push(['_trackEvent', 'LastViewed', 'AddToCart', price]);
             }
         });
     }
-    var sizes = new SizesManager();
-    $(document).on('click','.boxSizeSelector .selectContainer',function(e){
-        sizes.init($(this).closest('.selectSize'));
-    });
-    $(document).on('click', '.boxSizeSelector .prd-option-collection li.prd-option-item', function() {
-        sizes.display($(this));
-    });
 });
