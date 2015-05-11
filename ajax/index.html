@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>The items list</h1>
+        <div id="itemsContainer"></div>
+        <script type="text/tmpl" id="itemsBox">
+            <ul>
+            <% for ( var i = 0; i < menu.items.length; i++ ) { %>
+                <li><a href="<%=menu.items[i].link %>"><%=menu.items[i].label %></a></li>
+            <% } %> 
+            </ul>
+        </script>
+        <script src="../js/templateEngine.js" type="text/javascript"></script>
+        <script src="../js/requestManager.js" type="text/javascript"></script>
+        <script>
+            var dataPoll = new requestManager();
+            dataPoll.get('menu.json','itemsBox','itemsContainer');
+        </script>
+    </body>
+</html>

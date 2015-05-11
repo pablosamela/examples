@@ -1,0 +1,11 @@
+{
+    "menu": {
+        "id": "file",
+        "value": "File",
+        "items": [
+            {"label": "Google", "link": "http://www.google.com/"},
+            {"label": "Yahoo", "link": "http://www.yahoo.com/"},
+            {"label": "Microsoft", "link": "http://www.microsoft.com"}
+        ]
+    }
+}
