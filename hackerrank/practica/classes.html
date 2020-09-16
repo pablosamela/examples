@@ -1,0 +1,41 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <script>
+    
+    class Person {
+      name = '';
+      age = '';
+      constructor(name, age){
+        this.name = name;
+        this.age = age;
+      }
+    }
+
+    class Worker extends Person {
+      occupation = '';
+      constructor(name, age, occupation){
+        super(name, age);
+        this.occupation = occupation;
+      }
+    }
+
+    const person = new Person('Pepe', 45);
+    console.log(person);
+
+    const worker = new Worker('Pepe', 45, 'Developer');
+    console.log(worker);
+
+
+  </script>
+
+</body>
+
+</html>
+
+<!-- monorepo
+webstorm
+zone.js -->

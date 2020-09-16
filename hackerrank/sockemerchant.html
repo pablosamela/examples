@@ -1,0 +1,34 @@
+<html>
+  <head>
+  </head>
+  <body>
+
+    <script>
+        let ar = [1,2,1,2,1,3,2,5,5,10,40,40,40,10,1,1,1,1,1,1,1,1];
+
+        function sockMerchant(n, ar) {
+          let pairCount = 0;
+
+          ar.sort(function(a, b) {
+            return a - b;
+          });
+
+          for(let i = 0; i < n -1 ; i++){
+            if(ar[i] === ar[i+1] ){
+              pairCount++;
+              i++;
+            }
+          }
+
+          return pairCount;
+
+        }
+
+        console.log(sockMerchant(ar.length, ar));
+
+
+
+    </script>
+
+  </body>
+</html>

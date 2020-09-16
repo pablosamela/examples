@@ -1,0 +1,45 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <script>
+
+    function alternatingCharacters(s) {
+      s = s.split('\n').map(item => item.trim());
+      const len = s.shift();
+      
+      let remove;
+      let result = '';
+      for (let i = 0; i < len; i++) {
+        remove = 0;
+        for (let j = 0; j < s[i].length; j++) {
+          if(s[i][j] === s[i][j + 1]){
+            remove++;
+          }
+        };
+        result += remove + '\n';
+      }
+      return result;
+    }
+
+    console.log(alternatingCharacters(`5
+AAAA
+BBBBB
+ABABABAB
+BABABA
+AAABBB`));
+
+console.log(alternatingCharacters(`3
+AAABBBAABB
+AABBAABB
+ABABABAA`));
+
+console.log(alternatingCharacters(`1
+ABBABBAA`));
+
+  </script>
+</body>
+
+</html>

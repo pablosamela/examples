@@ -1,0 +1,33 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <script>
+        function jumpingOnClouds(c) {
+            const total = c.length;
+
+            let i = 0;
+            let result = 0;
+            while (i < total - 1) {
+                if (i + 2 < total && c[i + 2] != 1) {
+                    result++;
+                    i = i + 2;
+                } else if (c[i + 1] != 1) {
+                    result++;
+                    i++;
+                }
+            }
+            return result;
+        }
+        console.log(jumpingOnClouds([0,0,1,0,0,1,0]));
+        console.log(jumpingOnClouds([0,0,0,1,0,0]));
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+  <script>
+    'use strict';
+
+    function rotLeft(a, d) {
+      const alength = a.length;
+      let newIndex = 0;
+      let newArray = [];
+
+      for (let i = 0; i < alength; i++) {
+        newIndex = (i + d) % alength;
+        newArray[i] = a[newIndex]
+        // console.log(`${i} ${newIndex}`);
+      }
+      return newArray;
+    }
+
+    console.log(rotLeft([1, 2, 3, 4, 5], 4));
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <script>
+    const memoCache = [];
+    function crosswordPuzzle(crossword, hints) {
+      const finalCoordinatesWords = []
+      const coordinatesHorizontal = [];
+      const coordinatesVertical = [];
+      const coordinatesCrossRoad = [];
+
+      const hintsSplit = hints[0].replace(/\s/g, '').split(';');
+      const allLengths = hintsSplit.map(word => word.length);
+      const minLength = Math.min(...allLengths);
+      const hasSameLengthWords = hasDuplicates(allLengths);
+
+      for (let i = 0; i < crossword.length; i++) {
+        for (let j = 0; j < crossword[i].length; j++) {
+          if (crossword[i][j] === '-' && (crossword[i + 1][j] === '-' || crossword[i - 1][j] === '-')) {
+            coordinatesVertical.push({ x: i, y: j });
+          }
+          if (crossword[i][j] === '-' && (crossword[i][j + 1] === '-' || crossword[i][j - 1] === '-')) {
+            coordinatesHorizontal.push({ x: i, y: j });
+          }
+          if (crossword[i][j] === '-' &&
+            (crossword[i][j + 1] === '-' || crossword[i][j - 1] === '-') &&
+            (crossword[i + 1][j] === '-' || crossword[i - 1][j] === '-')
+          ) {
+            coordinatesCrossRoad.push({ x: i, y: j });
+          }
+        }
+      }
+      const coordinatesGroupHorizontal = groupBy(coordinatesHorizontal, 'x').filter(item => item.length >= minLength);
+      const coordinatesGroupVertical = groupBy(coordinatesVertical, 'y').filter(item => item.length >= minLength);
+
+      const coordinatesWordsHorizontal = [];
+      const coordinatesWordsVertical = [];
+      const coordinatesWords = [];
+
+      for (let k = 0; k < hintsSplit.length; k++) {
+        const splitWord = hintsSplit[k].split('');
+
+        for (let l = 0; l < coordinatesGroupHorizontal.length; l++) {
+          if (coordinatesGroupHorizontal[l].length === splitWord.length) {
+            const mergedCrossWord = [];
+            coordinatesGroupHorizontal[l].forEach((element, i) => {
+              mergedCrossWord.push({ ...element, ...{ w: splitWord[i] } });
+            });
+            coordinatesWords.push(mergedCrossWord);
+          }
+        }
+
+        for (let l = 0; l < coordinatesGroupVertical.length; l++) {
+          if (coordinatesGroupVertical[l].length === splitWord.length) {
+            const mergedCrossWord = [];
+            coordinatesGroupVertical[l].forEach((element, i) => {
+              mergedCrossWord.push({ ...element, ...{ w: splitWord[i] } });
+            });
+            coordinatesWords.push(mergedCrossWord);
+          }
+        }
+
+        if(hasSameLengthWords) {
+/*           for (let m = 0; m < coordinatesWordsHorizontal.length; m++) {
+            const element = coordinatesWordsHorizontal[m];
+          } */
+        }
+
+        finalCoordinatesWords.push({...coordinatesWordsHorizontal, ...coordinatesWordsVertical});
+      }
+
+      console.log(hintsSplit);
+      console.log(coordinatesCrossRoad);
+      console.log('------------------------');
+      console.log(crossword);
+      console.log(finalCoordinatesWords);
+    }
+
+    function mergeCoordinatesWithLetters(group, words) {
+      const coordinatesWords = [];
+      for (let l = 0; l < group.length; l++) {
+        if (group[l].length === words.length) {
+          const mergedCrossWord = [];
+          group[l].forEach((element, i) => {
+            mergedCrossWord.push({ ...element, ...{ w: words[i] } });
+          });
+          coordinatesWords.push(mergedCrossWord);
+        }
+      }
+      return coordinatesWords;
+    }
+
+    function groupBy(objectToOrder, name) {
+      return objectToOrder.reduce((acc, obj) => {
+        const keyName = obj[name];
+        if (!acc[keyName]) {
+          acc[keyName] = [];
+        }
+        acc[keyName].push(obj);
+        return acc;
+      }, []);
+    }
+
+    function hasDuplicates(arr) {
+      var counts = [];
+
+      for (var i = 0; i <= arr.length; i++) {
+        if (counts[arr[i]] === undefined) {
+          counts[arr[i]] = 1;
+        } else {
+          return true;
+        }
+      }
+      return false;
+    }
+
+
+    const crosswordMatrix = [
+      '+-++++++++',
+      '+-++++++++',
+      '+-------++',
+      '+-++++++++',
+      '+-++++++++',
+      '+------+++',
+      '+-+++-++++',
+      '+++++-++++',
+      '+++++-++++',
+      '++++++++++'
+    ];
+    const hintsString = ['AGRA; NORWAY; ENGLAND; GWALIOR'];
+
+    console.log(crosswordPuzzle(crosswordMatrix, hintsString));
+
+  </script>
+</body>
+
+</html>
+
+<!-- monorepo
+webstorm
+zone.js -->

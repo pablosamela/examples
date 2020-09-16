@@ -1,0 +1,28 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <script>
+
+    function theLoveLetterMystery(s) {
+      let count = 0;
+      const sl = s.length;
+      for (let i = 0, j = sl - 1; i < j; i++, j--) {
+        count += Math.abs(s[i].charCodeAt(0) - s[j].charCodeAt(0));
+      }
+      return count;
+    }
+
+    console.log(theLoveLetterMystery('abc'));
+
+    console.log(theLoveLetterMystery('abcba'));
+
+    console.log(theLoveLetterMystery('abcd'));
+    console.log(theLoveLetterMystery('cba'));
+
+  </script>
+</body>
+
+</html>

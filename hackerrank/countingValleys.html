@@ -1,0 +1,40 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+  <script>
+    function countingValleys(n, s) {
+      let seaLevel = 0;
+      let valley = 0;
+      let steps = s.split('');
+
+      for (let i = 0; i < steps.length; i++) {
+        if (steps[i] == 'U') {
+          seaLevel++;
+          if (seaLevel == 0 ) {
+            valley++;
+          }
+        } else if (steps[i] == 'D') {
+          seaLevel--;
+        }
+      }
+      return valley;
+
+
+    }
+
+
+    console.log(countingValleys(8, 'UDDDUDUU'));
+    console.log(countingValleys(2, 'DU'));
+    console.log(countingValleys(2, 'UD'));
+    console.log(countingValleys(4, 'DUDU'));
+    console.log(countingValleys(20, 'DUUUUUUUDDDDDDDDDUUU'));
+
+  </script>
+
+</body>
+
+</html>

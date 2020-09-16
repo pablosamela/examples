@@ -1,0 +1,45 @@
+<html>
+  <head> </head>
+
+  <body>
+    <script>
+      function fibonacciWhile(n) {
+        let a = 1;
+        let b = 0;
+        let temp = a;
+
+        while (n >= 0) {
+          temp = a;
+          a = a + b;
+          b = temp;
+          n--;
+        }
+
+        return b;
+      }
+
+      function fibonacciRecursion(n) {
+        return n <= 1 ? 1 : fibonacciRecursion(n - 1) + fibonacciRecursion(n - 2);
+      }
+
+      function fibonacciMemo(n, memo) {
+        memo = memo || {};
+
+        if (memo[n]) return memo[n];
+        if (n <= 1) return 1;
+
+        return (memo[n] = fibonacciMemo(n - 1, memo) + fibonacciMemo(n - 2, memo));
+      }
+
+      console.log(fibonacciWhile(40));
+      console.log(fibonacciMemo(40));
+      console.log(fibonacciREmoveRecursion(40));
+
+      
+    </script>
+  </body>
+</html>
+
+<!-- monorepo
+webstorm
+zone.js -->

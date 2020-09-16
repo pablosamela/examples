@@ -1,0 +1,41 @@
+<html>
+  <head>
+  </head>
+  <body>
+
+    <script>
+      'use strict';
+
+      function timeConversion(s) {
+        let dateArray = s.split(':');
+
+        let isAfternoon = dateArray[2].endsWith('PM');
+        let hour;
+
+        if (isAfternoon) {
+          if(dateArray[0] === '12') {
+            hour = '12';
+          } else {
+            hour = (parseInt(dateArray[0]) + 12).toString()
+          } 
+        } else {
+          if(dateArray[0] == '12') {
+            hour = '00';
+          } else {
+            hour = dateArray[0];
+          }
+        }
+
+        return hour.concat(':', dateArray[1], ':', dateArray[2].slice(0,2));
+      }
+
+      console.log( timeConversion('07:05:45AM'));
+
+      console.log( timeConversion('07:05:45PM'));
+
+      console.log( timeConversion('12:05:45AM'));
+      console.log( timeConversion('12:05:45PM'));
+    </script>
+
+  </body>
+</html>

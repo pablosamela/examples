@@ -1,0 +1,46 @@
+<html>
+  <head>
+  </head>
+  <body>
+
+    <script>
+        function customSort(arr) {
+          // Write your code here
+          let repeatedItems = [];
+          let noprepeated = [];
+
+          arr.sort(function (a, b) {
+            return a - b;
+          });
+        
+          for (let i = 0; i < arr.length; i++) {
+            let incidences = 0;
+            for(let s = 0; s < arr.length; s++){
+              if(arr[i] === arr[s]){
+                incidences++;
+              }
+            }
+            if (incidences > 1) {
+              repeatedItems.push(arr[i]);
+            } else{
+              noprepeated.push(arr[i]);
+            }
+          }
+
+          const finalSorted = noprepeated.concat(repeatedItems);
+
+          let column = '';
+          for (let i = 0; i < finalSorted.length; i++) {
+            column += finalSorted[i] + '\n';
+          }
+
+          return column;
+        
+        }
+
+        console.log(customSort([555555555555555,40,5,5,50,50,555555555555555,50,50,555555555555555,40,5,5,5,3,3,555555555555555,3,3,3,555555555555555,3,3,1,2,2,2,4]));
+    
+    </script>
+
+  </body>
+</html>

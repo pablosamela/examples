@@ -1,0 +1,85 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <script>
+    function minimumBribes(q) {
+      let counter = 0;
+      let currentPosition = q.length - 1;
+      let log = '';
+      let bribes;
+      let outputCaos = false;
+
+      while (currentPosition >= 0) {
+        const current = q[currentPosition];
+        const orderPosition = currentPosition + 1;
+
+        bribes = current - orderPosition;
+
+        if (bribes >= 3) {
+          outputCaos = true;
+        }
+
+        const briberPosition = current - 2;
+
+        for (let comparePosition = Math.max(0, briberPosition); comparePosition < currentPosition; comparePosition++) {
+          const compare = q[comparePosition];
+          
+          if (compare > current) {
+            counter++;
+          }
+        }
+
+        currentPosition--;
+      }
+      console.log((outputCaos) ? 'Too chaotic' : counter);
+    }
+
+    console.log(minimumBribes([2,1,5,3,4])); // 3
+    console.log(minimumBribes([2,5,1,3,4])); // Too chaotic 
+
+    console.log(minimumBribes([5,1,2,3,7,8,6,4])); // Too chaotic
+    console.log(minimumBribes([1,2,5,3,7,8,6,4])); // 7
+    console.log(minimumBribes([1,2,5,3,4,7,8,6])); // 4
+
+
+
+
+   /* function minimumBribes(q) {
+  let counter = 0;
+  let currentPosition = q.length - 1;
+  let log = '';
+  let bribes;
+
+  while (currentPosition >= 0) {
+    const current = q[currentPosition];
+    const orderPosition = currentPosition + 1;
+
+    bribes = current - orderPosition;
+
+    if (bribes >= 3) {
+      console.log("Too chaotic")
+      return;
+    }
+
+    const briberPosition = current - 2;
+
+    for (let comparePosition = Math.max(0, briberPosition); comparePosition < currentPosition; comparePosition++) {
+      const compare = q[comparePosition];
+      
+      if (compare > current) {
+        counter++;
+      }
+    }
+
+    currentPosition--;
+  }
+
+  console.log(counter);
+}*/
+  </script>
+</body>
+
+</html>

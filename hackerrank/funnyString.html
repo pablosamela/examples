@@ -1,0 +1,36 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <script>
+
+    function funnyString(s) {
+      s = s.split('');
+      const original = [];
+      const reversed = [];
+      const len = s.length;
+      let equals = 1;
+
+      for (let i = 0; i < len; i++) {
+        original.push(s[i].charCodeAt(0));
+        reversed.push(s[(len - 1) - i].charCodeAt(0));
+      }
+
+      for (let j = 0; j < len - 1; j++) {
+        if(Math.abs(original[j + 1] - original[j]) === Math.abs(reversed[j] - reversed[j + 1])){
+          equals++;
+        };
+      }
+      return (equals === len) ? 'Funny': 'Not Funny';
+    }
+
+    console.log(funnyString('acxz'));
+    console.log(funnyString('bcxz'));
+
+
+  </script>
+</body>
+
+</html>

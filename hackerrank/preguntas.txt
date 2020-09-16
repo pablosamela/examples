@@ -1,0 +1,121 @@
+Questions
+
+SDLC / Agile / Scrum
+
+Which Scrum ceremonies do you know, and where are they done during a Sprint?
+
+Describe the lifecycle from a US to be 100% finalized and deployed
+
+Software Design patterns
+
+Define Code encapsulation
+
+Define Singleton 
+
+Define Factory 
+
+Define Observer
+
+Define Redux
+
+Define Decorator
+
+What would you do if there is some piece of code, that is in 4 different places? 
+
+What mean S.O.L.I.D. for you? 
+
+CSS / HTML - Layout 
+
+Difference between padding and margin
+
+What is a flexbox? 
+
+Using flexbox, how would you reorder elements in a DOM?
+
+What is absolute position? When do you use it? What is the anchor point? What parameters do you use for it?
+
+What is the difference between class and id? And class and style?  
+
+What is the difference between localstorage, sessionstorage and IndexDB? 
+
+How would you maintain the state of a user in a site? (history, cookies, breadcrumb, etc)
+
+CSS Frameworks (at least Boostrap) 
+
+How does a grid system works?
+
+What do md (medium) and sm (small) stand for? 
+
+HTTP 
+
+What verbs do you know? What’s the main difference between get and post?
+
+What is an endpoint on API?
+
+Code to return a success
+
+Code to return an internal server error?
+
+Code to respond a bad request? 
+
+What is a “teapot” error code? 
+
+JavaScript 
+
+What are the coolest features in version ECMAScript5 vs ECMAScript6? 
+
+What is the difference between let and var? 
+
+What is the difference between == and ===?
+
+How would you find objects with specific characteristics in an array?
+
+Which vulnerability prevention techniques do you know?
+
+How do you prevent XSS (cross site scripting) or CSRF (Cross-site request forgery)?
+
+What is falsy and truthy? What values apply for falsy? 
+
+If you receive a string with a json inside: how would you transform that json into an object?
+
+How do promises work? 
+
+Angular JS 
+
+How would you describe the Directive lifecycle? 
+
+What runs first: controller or directive link?  
+
+What are Hooks?
+
+Difference between ng-show and ng-if, when do you use one or another?
+
+Angular 2 
+
+What is a SPA?
+
+What is the purpose of a router? where would you define it?
+
+Define a component 
+
+Describe dependency injections
+
+Define pipes? And pure pipes? 
+
+What are the most commonly used decorators?
+
+What is NGRX?
+
+What does a typical folder structure look like?
+
+How would you access to an observable from the HTML without subscribing to it in the code?
+
+What would you include in the parameters of the constructor?
+
+What does CLI (Command Line Interface) stand for and what is it used for?  
+
+Difference between directive and component
+
+What things should go to the core, shared and feature modules?
+
+How would you call a REST API service? 

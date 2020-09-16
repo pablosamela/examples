@@ -1,0 +1,34 @@
+<html>
+  <head>
+  </head>
+  <body>
+
+    <script>
+      'use strict';
+
+      function miniMaxSum(arr) {
+        let result = [];
+        let maxArrayLength = 4;
+
+        let f = function(prefix, arr){
+          for(let i = 0; i < arr.length; i++) {
+            let actualComination = prefix.concat(arr[i]);
+            if(actualComination.length == maxArrayLength){
+              let sumOf = actualComination.reduce(function (previous, actual, index, vector){
+                return previous +  actual;
+              });
+              result.push(sumOf);
+            }
+            f(actualComination, arr.slice(i + 1));
+          }
+        }
+        f([], arr);
+        console.log(Math.min.apply(null,result) + ' ' +  Math.max.apply(null,result)) ;
+      }
+      
+      miniMaxSum([1,2,3,4,5,6,7,8,9]);
+    
+    </script>
+
+  </body>
+</html>

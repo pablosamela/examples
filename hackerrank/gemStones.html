@@ -1,0 +1,41 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <script>
+
+    function gemstones(arr) {
+      const len = arr.length;
+      const arrJoined = arr.join('').split('');
+      const uniques = arrJoined.filter((item,index) => arrJoined.indexOf(item) === index);
+      const gems = 0;
+
+       for (let i = 0; i < uniques.length; i++) {
+        let count = 0;
+        const current = uniques[i];
+        for (let j = 0; j < len; j++) {
+          if(arr[j].includes(current)){
+            count++;
+          }
+        }
+        if(count === len){
+          gems++;
+        }
+      }
+      return gems;
+    }
+
+
+/*     function gemstones(arr) {
+      return [... new Set(arr.join('').split(''))].filter(m => arr.every(s => s.includes(m))).length;
+    } */
+    console.log(gemstones(['abcdde','abaccd','abeeabg', 'abeexzy']));
+    console.log(gemstones(['asfff','assas','eewwss']));
+
+
+  </script>
+</body>
+
+</html>

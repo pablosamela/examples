@@ -1,0 +1,37 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <script>
+    function solution(A) {
+      let coinChanges = 0;
+      const startingCoin = A[0];
+      const otherCoin = (startingCoin === 1) ? 0 : 1;
+      const len = A.length;
+
+      for (let i = 0; i < len; i++) {
+        if ((i % 2 == 0 && A[i] != startingCoin) || (i % 2 != 0 && A[i] != otherCoin)) {
+          coinChanges++;
+        }
+      }
+      return coinChanges;
+    }
+
+
+    console.log(solution([1, 0, 1, 0, 1, 1]));
+    console.log(solution([1, 1, 0, 1, 1]));
+    console.log(solution([0, 1, 0]));
+    console.log(solution([0, 1, 1, 0]));
+    console.log(solution([0, 0, 0, 0]));
+    console.log(solution([1, 1, 1, 1]));
+    console.log(solution([1, 0, 1, 1]));
+    console.log(solution([1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+    console.log(solution([0,0,0,1,0,1,0,1,1,1]));
+    console.log(solution([0]));
+
+  </script>
+</body>
+
+</html>

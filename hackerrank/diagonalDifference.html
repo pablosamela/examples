@@ -1,0 +1,29 @@
+<html>
+  <head>
+  </head>
+  <body>
+
+    <script>
+        function diagonalDifference(arr) {
+          let diagLeft = 0;
+          let diagRigth = 0;
+          let len = arr.length;
+
+          for(let row = 0; row < len; row++) {
+            diagLeft += arr[row][row];
+            diagRigth += arr[row][len - row -1];
+          }
+          return (diagLeft > diagRigth) ? diagLeft - diagRigth : diagRigth - diagLeft;
+        }
+
+        console.log(diagonalDifference(
+          [
+            [-11,2,4],
+            [4,5,6],
+            [10,8,-12]
+          ]));
+    
+    </script>
+
+  </body>
+</html>

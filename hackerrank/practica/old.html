@@ -1,0 +1,67 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <script>
+
+
+
+    var a = Person("pepe");
+    var b = new Person("pepe");
+    var c = Person;
+
+    function Person(name) {
+      this.showname = name;
+    }
+    // console.log(a.showname); // error, attribute not found // hoisting
+    console.log(b.showname); // pepe
+    console.log(c.showname); // undefined // hoisting 
+
+
+
+    for (var i = 0; i < 3; i++) {
+      setTimeout(function (inneri) { 
+        console.log(i); 
+      }(i), 1000 + i);
+    }
+
+    function createBase(a) {
+      return function (b) {
+        return a + b;
+      }
+    }
+    var addSix = createBase(6);
+    console.log(addSix(10)); // returns 16
+    console.log(addSix(21)); // returns 27
+
+
+
+    (function () {
+      var a = b = 3;
+    })();
+
+    console.log("a defined? " + (typeof a !== 'undefined'));
+    console.log("b defined? " + (typeof b !== 'undefined'));
+
+
+
+    var myObject = {
+      foo: "bar",
+      func: function () {
+        var self = this;
+        console.log("outer func:  this.foo = " + this.foo);
+        console.log("outer func:  self.foo = " + self.foo);
+        (function () {
+          console.log("inner func:  this.foo = " + this.foo);
+          console.log("inner func:  self.foo = " + self.foo);
+        }());
+      }
+    };
+    myObject.func();
+  </script>
+
+</body>
+
+</html>
